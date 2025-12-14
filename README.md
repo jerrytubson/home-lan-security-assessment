@@ -195,3 +195,69 @@ This assessment was conducted for educational purposes on a self-owned system.
 - Anonymous access was denied
 - HTTP connections were actively reset
 - Firewall and OS protections were effective
+
+
+## Attack Attempts & Observations
+
+### 1. Network and Service Enumeration
+
+Initial enumeration was performed using Nmap to identify exposed services.
+
+Observed open ports included:
+- 135/tcp (MSRPC)
+- 139/tcp (NetBIOS)
+- 445/tcp (SMB)
+- 80/tcp (HTTP)
+
+The presence of SMB and RPC indicated a Windows host, making it a candidate for common Windows-focused attacks.
+
+
+### 2. SMB Enumeration and Vulnerability Checks
+
+SMB enumeration and vulnerability scripts were executed targeting port 445.
+
+The following were tested:
+- MS08-067
+- MS17-010 (EternalBlue)
+- Conficker-related checks
+- SMB anonymous access
+
+Results:
+- All legacy SMB vulnerability checks failed to execute or returned non-vulnerable results
+- Anonymous SMB sessions were denied
+- No exploitable SMB shares were exposed
+
+This indicates that the target system is patched and does not expose legacy SMB weaknesses.
+
+
+### 3. HTTP Service Interaction
+
+Attempts to interact with the HTTP service on port 80 resulted in connection resets.
+
+Tools used included:
+- curl
+- Gobuster
+- Nmap HTTP scripts
+
+Observation:
+- TCP connections were accepted and immediately reset
+- No web content or directories were disclosed
+
+This behavior suggests either a protected service, a local-only binding, or active firewall filtering of HTTP requests.
+
+
+### 4. Authentication and Remote Access Testing
+
+Authentication-based enumeration tools were used to assess remote access exposure.
+
+Tools:
+- CrackMapExec (SMB / WinRM modules)
+- smbclient
+- Netcat
+
+Results:
+- SMB connections timed out or were rejected
+- No credential-less access paths were identified
+- WinRM did not accept unauthenticated connections
+
+No remote administrative access was achievable without valid credentials.
