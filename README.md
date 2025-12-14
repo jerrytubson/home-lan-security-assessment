@@ -261,3 +261,57 @@ Results:
 - WinRM did not accept unauthenticated connections
 
 No remote administrative access was achievable without valid credentials.
+
+
+## Defensive Analysis & Security Controls
+
+### 1. Operating System Hardening
+
+The target system was running a modern version of Microsoft Windows with current security updates applied.
+
+Key protections observed:
+- Legacy SMB exploits were ineffective due to patching
+- Deprecated protocols and insecure defaults were not exposed
+- Modern SMB versions were enforced
+
+This prevented exploitation of widely known vulnerabilities such as EternalBlue.
+
+
+### 2. Firewall Behavior
+
+The Windows Defender Firewall actively restricted inbound connections.
+
+Observed behavior included:
+- SMB connections timing out or being rejected
+- HTTP connections being reset immediately after establishment
+- Lack of response to unauthenticated probing
+
+This indicates that firewall rules were effectively limiting exposure while still allowing minimal service availability.
+
+
+### 3. Authentication and Access Controls
+
+The system did not permit anonymous or guest access to critical services.
+
+Key observations:
+- SMB guest access was denied
+- No unauthenticated WinRM access was possible
+- RPC services did not expose sensitive information without credentials
+
+Proper authentication controls significantly reduced attack surface.
+
+
+### 4. Security Posture Summary
+
+Despite multiple enumeration and vulnerability checks, no direct exploitation paths were identified.
+
+The system demonstrated:
+- Effective patch management
+- Reasonable network exposure
+- Strong default security posture
+
+This confirms that modern Windows systems, when properly configured, are resilient to common network-based attacks.
+
+
+
+
