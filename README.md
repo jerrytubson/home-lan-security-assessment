@@ -156,3 +156,42 @@ This repository serves as:
 
 Security-focused software engineer with interest in penetration testing, Windows internals, and network defense.
 
+## Scope & Authorization
+
+- Assessment Type: Internal / Home LAN security assessment
+- Target System: Windows workstation
+- Network: Private home network
+- Authorization: System owned by tester; testing permitted
+- Testing Style: Black-box
+
+This assessment was conducted for educational purposes on a self-owned system.
+
+
+## Objectives
+
+- Identify exposed network services
+- Enumerate SMB, RPC, and HTTP services
+- Assess exploitability of common Windows vulnerabilities
+- Evaluate host hardening and firewall behavior
+- Document both attack attempts and defensive controls
+
+
+## Tools Used
+
+- Nmap
+- Gobuster
+- CrackMapExec
+- smbclient
+- Netcat
+- curl
+- Windows Defender Firewall
+- PowerShell
+
+
+## High-Level Findings
+
+- SMB service was accessible but restricted
+- No legacy SMB vulnerabilities were exploitable
+- Anonymous access was denied
+- HTTP connections were actively reset
+- Firewall and OS protections were effective
