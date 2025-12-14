@@ -314,4 +314,40 @@ This confirms that modern Windows systems, when properly configured, are resilie
 
 
 
+## Recommendations & Mitigations
+
+### 1. Maintain Patch Management
+
+Ensure that operating system and third-party software updates are applied promptly to prevent exposure to newly discovered vulnerabilities.
+
+
+### 2. Limit Network Exposure
+
+- Disable unused services such as SMB or NetBIOS if not required
+- Restrict inbound traffic to trusted hosts only
+- Avoid exposing management services to untrusted networks
+
+
+### 3. Strengthen Authentication
+
+- Enforce strong, unique passwords
+- Disable guest and anonymous access
+- Consider multi-factor authentication where applicable
+
+
+### 4. Continuous Monitoring
+
+- Review firewall logs periodically
+- Monitor for unusual connection attempts
+- Validate security controls after system changes
+
+
+### 5. Lab-Based Testing
+
+Conduct future testing in isolated lab environments (virtual machines) to safely practice exploitation techniques without risking production systems.
+
+
+
+
+
 
